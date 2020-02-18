@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# local config
+agreements/agreements/config_local.py
+
+#pycharm files
+.idea/
