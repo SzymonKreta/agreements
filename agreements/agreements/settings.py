@@ -16,7 +16,11 @@ from .config_local import (
     DB_HOST,
     DB_NAME,
     DB_PASS,
-    DB_USER
+    DB_USER,
+    SECRET_KEY,
+    DEBUG,
+    ALLOWED_HOSTS,
+    CSRF_COOKIE_SECURE
 )
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -25,15 +29,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ubl8uwzm^4-=xte_o=ghyb9c9dgy8$r*zla^wi4a9c@@3ii$nt'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
 
 # Application definition
 

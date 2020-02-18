@@ -1,11 +1,13 @@
 import re
 
 from django.db import models
+from django.core.exceptions import ValidationError
 from django.contrib.postgres.fields.jsonb import JSONField
 # Create your models here.
 
 def post_code_validator(code):
-    return re.match(r"\d{2}\-\d{3}", code)  # It's polish version
+    if not re.match(r"\d{2}\-\d{3}", code):  # It's polish version
+        raise ValidationError("Please put the valid post code")
 
 
 class UserData(models.Model):
