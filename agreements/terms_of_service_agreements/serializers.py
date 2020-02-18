@@ -9,6 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class TermsOfServiceSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = models.TermsOfService
         fields = ('__all__')
