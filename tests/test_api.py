@@ -1,8 +1,8 @@
 import pytest
-from rest_framework.test import APIClient
-from django.urls import reverse
-from data import USERS, NOT_VALID_USERS
 
+from rest_framework.test import APIClient
+
+from data import NOT_VALID_USERS, USERS
 
 USER_ENDPOINT = "/api/v1/users/"
 

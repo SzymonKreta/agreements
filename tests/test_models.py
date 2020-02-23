@@ -1,11 +1,8 @@
-from terms_of_service_agreements.models import (
-    UserData,
-    Agreement,
-    TermsOfServiceSchema
-)
+import pytest
 
 from data import USERS
-import pytest
+from terms_of_service_agreements.models import (Agreement,
+                                                TermsOfServiceSchema, UserData)
 
 
 @pytest.mark.django_db
@@ -25,5 +22,3 @@ def test_succesful_remove_user(first_name, last_name, street, post_code):
     user = test_succesful_create_user(first_name, last_name, street, post_code)
     user.delete()
     assert UserData.objects.count() == 0
-
-
