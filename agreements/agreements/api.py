@@ -1,6 +1,6 @@
 from rest_framework import routers
-from terms_of_service_agreements import views as agreement_views
 
+from terms_of_service_agreements import views as agreement_views
 
 router = routers.DefaultRouter()
 router.register(r'users', agreement_views.UserViewset)

@@ -12,16 +12,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
-from .config_local import (
-    DB_HOST,
-    DB_NAME,
-    DB_PASS,
-    DB_USER,
-    SECRET_KEY,
-    DEBUG,
-    ALLOWED_HOSTS,
-    CSRF_COOKIE_SECURE
-)
+from .config_local import (ALLOWED_HOSTS, CSRF_COOKIE_SECURE,  # noqa: F401
+                           DB_HOST, DB_NAME, DB_PASS, DB_USER, DEBUG,
+                           SECRET_KEY)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -131,5 +124,6 @@ STATIC_URL = '/static/'
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 100
+    'PAGE_SIZE': 100,
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
 }

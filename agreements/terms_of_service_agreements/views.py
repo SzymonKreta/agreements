@@ -1,7 +1,7 @@
 from rest_framework import viewsets
-from . import models
-from . import serializers
 from rest_framework.pagination import PageNumberPagination
+
+from . import models, serializers
 
 
 class StandardPagination(PageNumberPagination):
@@ -25,7 +25,7 @@ class AgreementViewset(viewsets.ModelViewSet):
     queryset = models.Agreement.objects.all()
     serializer_class = serializers.AgreementSerializer
     pagination_class = StandardPagination
-    filterset_fields = ('user', 'document')
+    filterset_fields = ('user',)
 
 
 class TermsOfServiceViewset(viewsets.ModelViewSet):

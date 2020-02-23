@@ -1,10 +1,7 @@
 from django.contrib import admin
 
-from .models import (
-    UserData,
-    Agreement,
-    TermsOfService
-)
+from .models import Agreement, TermsOfService, UserData
+
 # Register your models here.
 admin.register(UserData)
 admin.register(Agreement)
