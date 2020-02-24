@@ -12,9 +12,14 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
-from .config_local import (ALLOWED_HOSTS, CSRF_COOKIE_SECURE,  # noqa: F401
-                           DB_HOST, DB_NAME, DB_PASS, DB_USER, DEBUG,
-                           SECRET_KEY)
+SECRET_KEY = os.environ.get("SECRET_KEY", "123qwerty")
+
+DEBUG = int(os.environ.get("DEBUG", default=0))
+
+# 'DJANGO_ALLOWED_HOSTS' should be a single string of hosts with a space between each.
+# For example: 'DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]'
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "localhost").split(" ")
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -72,13 +77,13 @@ WSGI_APPLICATION = 'user_agreements.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': DB_NAME,
-        'USER': DB_USER,
-        'PASSWORD': DB_PASS,
-        'HOST': DB_HOST,
-        'PORT': '',
+    "default": {
+        "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.postgresql"),
+        "NAME": os.environ.get("DB_NAME", "agreements"),
+        "USER": os.environ.get("DB_USER", "db_user"),
+        "PASSWORD": os.environ.get("DB_PASSWORD", "db_password"),
+        "HOST": os.environ.get("DB_HOST", "localhost"),
+        "PORT": os.environ.get("SQL_PORT", "5432"),
     }
 }
 

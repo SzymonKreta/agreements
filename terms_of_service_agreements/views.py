@@ -19,17 +19,22 @@ class UserViewset(viewsets.ModelViewSet):
     queryset = models.UserData.objects.all()
     serializer_class = serializers.UserSerializer
     pagination_class = StandardPagination
+    filterset_fields = ('identifier',)
+    ordering = ['id']
+    http_method_names = ['get', 'post', 'head']
 
 
 class AgreementViewset(viewsets.ModelViewSet):
     queryset = models.Agreement.objects.all()
     serializer_class = serializers.AgreementSerializer
     pagination_class = StandardPagination
-    filterset_fields = ('user',)
+    ordering = ['id']
+    filterset_fields = ('user', 'user__identifier')
 
 
 class TermsOfServiceViewset(viewsets.ModelViewSet):
     queryset = models.TermsOfService.objects.all()
     serializer_class = serializers.TermsOfServiceSerializer
     pagination_class = TermsOfServiceDefaultPagination
+    ordering = ['id']
     http_method_names = ['get', 'post', 'head']

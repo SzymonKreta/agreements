@@ -1,8 +1,9 @@
 django
 djangorestframework
 markdown
-django-filter
 psycopg2
+django-filter
 colander
 coreapi
+gunicorn
 -e .

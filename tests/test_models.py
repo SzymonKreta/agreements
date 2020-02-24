@@ -1,8 +1,7 @@
 import pytest
 
 from data import USERS
-from terms_of_service_agreements.models import (Agreement,
-                                                TermsOfServiceSchema, UserData)
+from terms_of_service_agreements.models import UserData
 
 
 @pytest.mark.django_db

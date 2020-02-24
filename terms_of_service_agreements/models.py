@@ -1,4 +1,5 @@
 import re
+import uuid
 
 import colander
 from django.contrib.postgres.fields.jsonb import JSONField
@@ -23,6 +24,8 @@ def validate_terms_of_service_content(content):
 
 
 class UserData(models.Model):
+    identifier = models.UUIDField(default=uuid.uuid4,
+                                  help_text="uuid: Unique user identifier")
     first_name = models.CharField(max_length=30,
                                   help_text="str: user first name")
     last_name = models.CharField(max_length=150,
@@ -44,7 +47,7 @@ class TermsOfService(models.Model):
 class Agreement(models.Model):
     signed_at = models.DateTimeField(auto_now=True,
                                      help_text="datetime: time when agreement was signed")
-    user = models.ForeignKey(to=UserData, on_delete=models.SET_NULL, null=True,
+    user = models.ForeignKey(to=UserData, on_delete=models.DO_NOTHING, null=True,
                              help_text="valid user schema endpoint json object")
-    document = models.ForeignKey(to=TermsOfService, on_delete=models.SET_NULL, null=True,
+    document = models.ForeignKey(to=TermsOfService, on_delete=models.DO_NOTHING, null=True,
                                  help_text="valid terms endpoint schema json object")
