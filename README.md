@@ -48,7 +48,7 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
 ```
-Then go to '''localhost:800/api/v1''' to see endpoint details, you can check documentation also on '''/docs''' endpoint
+Then go to ```localhost:800/api/v1``` to see endpoint details, you can check documentation also on ```/docs``` endpoint
 
 
 ## Running the tests
@@ -58,7 +58,7 @@ Add permision to creatdb your db_user e.g.
 ```
 ALTER USER db_user CREATEDB;
 ```
-Then if you have dev_requirements.txt deps installed then you can run test simpy by runnin '''pytest''' command from your project root directory
+Then if you have dev_requirements.txt deps installed then you can run test simpy by runnin ```pytest``` command from your project root directory
 
 
 ### And coding style tests
@@ -71,11 +71,13 @@ flake8
 
 ## Deployment
 
+The configuration is not yet finished!!!
+
 For live deployment edit env.prod file then built it and run using docker-compose, you should also extend docker conf files by adding nginx section.
-'''
+```
 docker-compose -f docker-compose.yaml down -v
 docker-compose -f docker-compose.yaml up -d --build
-'''
+```
 More info how to update your docker-compose.yaml and other files you can find [here](https://testdriven.io/blog/dockerizing-django-with-postgres-gunicorn-and-nginx/)
 
 ## Built With
